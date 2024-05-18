@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetch API</title>
+</head>
+<body>
+    
+   
+    <script>
+        
+        
+            fetch('https://fakestoreapi.com/products/')
+            .then(res=>res.json())
+            .then((json)=>{
+        
+                const products = json;
+                
+                for(let i=0;i<20;i++){
+                
+                    var a=document.createElement ('div');
+                    a.className ="product_card";
+                    a.style.width = "75%";
+                    a.style.height = "500px";
+                  
+                    a.style.boxShadow = " 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)";
+                    a.style.borderRadius = "5px";
+                    a.style.marginBottom = "10px";
+                    a.style.display = "flex";
+                    a.style.alignItems = "center";
+                    a.style.marginLeft = "200px";
+
+                    var b=document.createElement('div');
+                    b.className="product_image";
+                    
+
+                    var d=document.createElement('img');
+                    d.src=products[i].image;
+                    d.style.width = "300px";
+                    d.style.height = "400px";
+                    d.style.borderTopLeftRadius = "5px";
+                    d.style.borderTopRightRadius = "5px";
+
+                    var c=document.createElement('div');
+                    c.className="product_info";
+                    c.style.textAlign = "center";
+
+                    var e=document.createElement('h1');
+                    e.innerHTML=products[i].title;
+                    e.style.color = "#343636";
+
+                    var price=document.createElement('h2');
+                    price.innerHTML = "₹"+products[i].price;
+                    price.style.color="#0f1111";
+
+                    var category = document.createElement('h3');
+                    category.innerHTML="Category :"+" "+ products[i].category;
+                    category.style.color = "#7fda69";
+
+                    var f=document.createElement('p');
+                    f.innerHTML=products[i].description;
+                    f.style.fontSize = "18px";
+
+                    var rating = document.createElement('h2');
+                    rating.innerHTML = "Rating : "+products[i].rating.rate+"/5";
+                    rating.style.color = "#ffa41c";
+
+
+
+                    var g=document.createElement('button');
+                    g.innerHTML="Add to cart";
+                    g.style.backgroundColor = "#ffd814";
+                    g.style.borderRadius = "5px";
+                    g.style.fontSize = "15px";
+                    g.style.border = "none";
+                    g.style.padding ="10px";
+                    
+
+                    c.appendChild(e);
+
+                    c.appendChild(price);
+                    c.appendChild(category);
+                    
+                    c.appendChild(f);
+                    c.appendChild(rating);
+                    c.appendChild(g);
+                    b.appendChild(d);
+                    a.appendChild(b);
+                    a.appendChild(c);
+                    document.body.appendChild(a);
+                    console.log(a);
+
+                }
+
+
+
+
+            }
+        )
+        
+
+        
+        
+      
+    </script>
+</body>
+</html>
